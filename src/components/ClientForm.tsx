@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -9,13 +8,26 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { 
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Trash2 } from 'lucide-react';
 
 interface ClientFormProps {
   client?: Client;
   onSaved?: () => void;
+  onDelete?: () => void;
 }
 
-const ClientForm = ({ client, onSaved }: ClientFormProps) => {
+const ClientForm = ({ client, onSaved, onDelete }: ClientFormProps) => {
   const navigate = useNavigate();
   const isEditing = !!client;
   
@@ -23,7 +35,7 @@ const ClientForm = ({ client, onSaved }: ClientFormProps) => {
     name: '',
     phone: '',
     address: '',
-    price: 0,
+    price: null,
     notes: '',
   });
   
@@ -89,8 +101,41 @@ const ClientForm = ({ client, onSaved }: ClientFormProps) => {
   
   return (
     <Card className="animate-fade-in max-w-md mx-auto">
-      <CardHeader>
+      <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle>{isEditing ? 'Edit Client' : 'Add New Client'}</CardTitle>
+        {isEditing && onDelete && (
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button 
+                type="button" 
+                variant="outline" 
+                size="sm" 
+                className="bg-red-600 text-white hover:bg-red-500 hover:text-white"
+              >
+                <Trash2 className="h-4 w-4 mr-2" />
+                Delete
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This will permanently delete {client.name} and all associated jobs.
+                  This action cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction 
+                  onClick={onDelete}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        )}
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">

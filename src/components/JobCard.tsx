@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { Job } from '@/types';
 import { getClientName, saveJob, getClient, deleteJob } from '@/utils/localStorage';
 import { Card, CardContent } from '@/components/ui/card';
-import { Calendar } from 'lucide-react';
+import { Calendar, Pencil } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
-import { JobStatusBadges } from './job/JobStatusBadges';
 import { JobClientInfo } from './job/JobClientInfo';
 import { JobActions } from './job/JobActions';
 import { DeleteJobDialog } from './job/DeleteJobDialog';
+import { Button } from '@/components/ui/button';
 
 interface JobCardProps {
   job: Job;
@@ -128,14 +128,22 @@ const JobCard = ({ job, onUpdate }: JobCardProps) => {
         "h-full transition-all duration-300 hover:shadow-md overflow-hidden",
         job.completed ? "bg-muted/40" : "bg-white/80"
       )}>
-        <CardContent className="p-5">
-          <div className="flex justify-between items-start mb-3">
+        <CardContent className="p-4">
+          <div className="flex justify-between items-center mb-2">
             <div className="flex items-center text-sm font-medium">
               <Calendar className="h-4 w-4 mr-1.5 text-lawn/80" />
               {formattedDate}
             </div>
             
-            <JobStatusBadges job={job} />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xs text-gray-600 border border-gray-300 hover:text-gray-900 hover:bg-gray-100"
+              onClick={handleEditJob}
+            >
+              <Pencil className="h-3.5 w-3.5 mr-1.5" />
+              Edit
+            </Button>
           </div>
           
           <JobClientInfo 
@@ -154,8 +162,6 @@ const JobCard = ({ job, onUpdate }: JobCardProps) => {
             onUnmarkComplete={handleUnmarkComplete}
             onMarkPaid={handleMarkPaid}
             onUnmarkPaid={handleUnmarkPaid}
-            onEdit={handleEditJob}
-            onDelete={() => setConfirmDelete(true)}
           />
         </CardContent>
       </Card>
