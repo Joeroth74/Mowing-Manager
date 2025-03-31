@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG Image Preview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .preview-container {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 30px;
+    }
+    .preview-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #16a34a;
+    }
+    .preview-frame {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+    .preview-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .comparison {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .comparison-item {
+      flex: 1;
+      min-width: 300px;
+    }
+    .social-preview {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: white;
+      margin-bottom: 20px;
+    }
+    .social-preview-header {
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      font-weight: bold;
+    }
+    .social-preview-image {
+      width: 100%;
+      height: auto;
+    }
+    .social-preview-content {
+      padding: 15px;
+    }
+    .social-preview-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .social-preview-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .social-preview-url {
+      color: #888;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Open Graph Image Preview</h1>
+  
+  <div class="preview-container">
+    <div class="preview-heading">Full Size Image (1200 × 630 pixels)</div>
+    <div class="preview-frame">
+      <img src="improved-og-image.svg" alt="Mowing Manager OG Image" class="preview-image">
+    </div>
+  </div>
+  
+  <div class="comparison">
+    <div class="comparison-item">
+      <div class="preview-heading">Facebook Preview</div>
+      <div class="social-preview">
+        <div class="social-preview-header">Facebook</div>
+        <img src="improved-og-image.svg" alt="Mowing Manager OG Image" class="social-preview-image">
+        <div class="social-preview-content">
+          <div class="social-preview-title">LawnCare Pro - Mowing Manager</div>
+          <div class="social-preview-description">Efficiently manage your lawn care clients, schedule jobs, and track payments with our easy-to-use platform.</div>
+          <div class="social-preview-url">lawncarepro.app</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="comparison-item">
+      <div class="preview-heading">Twitter Preview</div>
+      <div class="social-preview">
+        <div class="social-preview-header">Twitter</div>
+        <img src="improved-og-image.svg" alt="Mowing Manager OG Image" class="social-preview-image">
+        <div class="social-preview-content">
+          <div class="social-preview-title">LawnCare Pro - Mowing Manager</div>
+          <div class="social-preview-description">Efficiently manage your lawn care clients, schedule jobs, and track payments with our easy-to-use platform.</div>
+          <div class="social-preview-url">lawncarepro.app</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <p><strong>Note:</strong> This is a simulated preview. Actual appearance may vary slightly on different platforms.</p>
+</body>
+</html>
